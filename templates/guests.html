@@ -1,0 +1,15 @@
+<title>Dodaj gościa</title>
+<form>
+{% csrf_token %}
+    <label>imię: </label><input type="text" name="first_name"><br/>
+    <label>nazwisko: </label><input type="text" name="last_name"><br/>
+    <label>miasto: </label><input type="text" name="city"><br/>
+    <label>Numer dowodu: </label><input type="document" name="document"><br/>
+    <select name="cars">
+      <option value="Uczestnik">Uczestnik</option>
+      <option value="Gość">Gość</option>
+      <option value="Wolontariusz">Wolontariusz</option>
+    </select>
+    <br/>
+    <button>Dodaj</button>
+</form>
