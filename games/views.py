@@ -1,9 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
+from .forms import GameRentForm, GiveBackForm
 
 
-def rent(request):
-    return render(request, 'rent_game.html')
+class Rent(TemplateView):
+    template_name = 'rentGame.html'
+
+    def get(self, request):
+        form = GameRentForm()
+        return render(request, self.template_name, {'form': form})
 
 
-def give_back(request):
-    return render(request, 'giveBackGame.html')
+class GiveBackView(TemplateView):
+    template_name = 'giveBackGame.html'
+
+    def get(self, request):
+        form = GiveBackForm()
+        return render(request, self.template_name, {'form': form})
+
+
+def index(request):
+    return redirect('rent')

@@ -1,6 +1,29 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import FormView
+from .forms import AddGuestForm
+from .models import Guest
 
 
-def index(request):
-    return render(request, template_name='guests.html')
+class AddGuest(FormView):
+    template_name = 'guests.html'
+
+    def get(self, request, **kwargs):
+        form = AddGuestForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, **kwargs):
+        form = AddGuestForm(request.POST)
+
+        if form.is_valid():
+            data = form.cleaned_data
+            guest = Guest()
+            guest.first_name = data['first_name']
+            guest.last_name = data['last_name']
+            guest.document = data['document']
+            guest.city = data['city']
+            guest.age = data['age']
+            guest.save()
+
+        args = {'form': form}
+
+        return render(request, self.template_name, args)

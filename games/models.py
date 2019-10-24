@@ -4,5 +4,5 @@ from guests.models import Guest
 
 # Create your models here.
 class GameRent(models.Model):
-    userId = models.ForeignKey(Guest, models.CASCADE)
+    guest_id = models.ForeignKey(Guest, models.CASCADE)
     game = models.CharField(max_length=200)

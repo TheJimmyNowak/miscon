@@ -1,0 +1,7 @@
+<title>Wypożyczanie gier</title>
+<h1>Wypożycz grę!!!</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Wypożycz</button>
+</form>

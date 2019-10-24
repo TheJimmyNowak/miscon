@@ -6,4 +6,4 @@ class Guest(models.Model):
     last_name = models.CharField(max_length=50)
     age = models.IntegerField(default=0)
     city = models.CharField(max_length=100)
-
+    document = models.CharField(max_length=50)
