@@ -1,14 +1,12 @@
 from django import forms
-from .models import GameRent
+from .models import GameRentModel
 
 
 class GameRentForm(forms.ModelForm):
     class Meta:
-        model = GameRent
-        fields = ['guest_id', 'game']
+        model = GameRentModel
+        fields = ['guest', 'game']
 
 
-class GiveBackForm(forms.ModelForm):
-    class Meta:
-        model = GameRent
-        fields = ['guest_id', 'game']
+class GiveBackForm(forms.Form):
+    choice = forms.ModelChoiceField(queryset=GameRentModel.objects.all())

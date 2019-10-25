@@ -1,6 +1,6 @@
 <title>Zwrot gry</title>
 <h1>Zwróć grę!!!</h1>
-<form>
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Zwróć</button>

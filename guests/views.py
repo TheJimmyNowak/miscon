@@ -13,10 +13,10 @@ class AddGuest(FormView):
 
     def post(self, request, **kwargs):
         form = AddGuestForm(request.POST)
+        guest = Guest()
 
         if form.is_valid():
             data = form.cleaned_data
-            guest = Guest()
             guest.first_name = data['first_name']
             guest.last_name = data['last_name']
             guest.document = data['document']
@@ -24,6 +24,6 @@ class AddGuest(FormView):
             guest.age = data['age']
             guest.save()
 
-        args = {'form': form}
+        args = {'form': form, 'guest_id': guest.id}
 
         return render(request, self.template_name, args)
