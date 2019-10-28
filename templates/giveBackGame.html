@@ -1,7 +1,10 @@
-<title>Zwrot gry</title>
-<h1>Zwróć grę!!!</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Zwróć</button>
-</form>
+{% extends "main.html" %}
+{% block body %}
+    <title>Zwrot gry</title>
+    <form method="post">
+        <h1 class="text-white-50">Zwróć grę!!!</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Zwróć</button>
+    </form>
+{% endblock %}

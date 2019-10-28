@@ -1,0 +1,26 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row bg-secondary">
+                <nav class="nav">
+                  <a class="nav-link text-light" href="/guests">Goście</a>
+                  <a class="nav-link text-light" href="/games/rent">Wypożyczanie gier</a>
+                  <a class="nav-link text-light" href="/games/give-back">Oddawanie gier</a>
+                </nav>
+            </div>
+        <div class="row">
+            <div class="col-lg d-flex justify-content-center">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="footer-copyright text-center py-3">
+            <footer>
+                <p class="font-weight-bold">Copyright &copy; Miścon 2k20</p>
+            </footer>
+        </div>
+    </div>
+</body>

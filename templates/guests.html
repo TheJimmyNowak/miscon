@@ -1,8 +1,12 @@
+{% extends "main.html" %}
+{% block body %}
 <title>Dodaj gościa</title>
-<h1>Dodaj gościa</h1>
 <form method="post">
     {% csrf_token %}
+    <h1>Dodaj gościa</h1>
+    {{ form.errors }}
     {{ form.as_p }}
     <button type="submit">Dodaj</button>
 </form>
 {{ guest_id }}
+{% endblock %}
