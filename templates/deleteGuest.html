@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block body %}
+    <title>Usuń gościa</title>
+    <form method="post">
+        {% csrf_token %}
+        <h1>Usuń gościa</h1>
+        {{ form.as_p }}
+        {% if is_found %}
+            <p>Na pewno? Potem nie będzie odwrotu</p>
+            <a href="{{ guest_id }}/">Tak</a>
+        {% elif guest_exist == False %}
+            <p>Nie znaleziono gościa</p>
+            <button type="submit">Usuń</button>
+        {% else %}
+            <button type="submit">Usuń</button>
+        {% endif %}
+    </form>
+{% endblock %}

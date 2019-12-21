@@ -1,4 +1,5 @@
 from django import forms
+from .models import Guest
 
 
 class AddGuestForm(forms.Form):
@@ -33,8 +34,8 @@ class AddGuestForm(forms.Form):
         }
     ))
 
-    guest_type = forms.ChoiceField(label='', choices=[
-        ('participant', 'Uczestnik'),
-        ('guest', 'Gość'),
-        ('volunteer', 'Wolontariusz')]
-    )
+    guest_type = forms.ChoiceField(label='', choices=Guest.types)
+
+
+class DeleteGuestForm(forms.Form):
+    guest = forms.CharField(max_length=50)

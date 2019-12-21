@@ -5,12 +5,13 @@
 <body>
     <div class="container-fluid">
         <div class="row bg-secondary">
-                <nav class="nav">
-                  <a class="nav-link text-light" href="/guests">Goście</a>
-                  <a class="nav-link text-light" href="/games/rent">Wypożyczanie gier</a>
-                  <a class="nav-link text-light" href="/games/give-back">Oddawanie gier</a>
-                </nav>
-            </div>
+            <nav class="nav">
+                <a class="nav-link text-light" href="/guests">Goście</a>
+                <a class="nav-link text-light" href="/guests/deleteguest">Usuń Gościa</a>
+                <a class="nav-link text-light" href="/games/rent">Wypożyczanie gier</a>
+                <a class="nav-link text-light" href="/games/give-back">Oddawanie gier</a>
+            </nav>
+        </div>
         <div class="row">
             <div class="col-lg d-flex justify-content-center">
                 {% block body %}
@@ -19,7 +20,7 @@
         </div>
         <div class="footer-copyright text-center py-3">
             <footer>
-                <p class="font-weight-bold">Copyright &copy; Miścon 2k20</p>
+                <p class="font-weight-bold">Copyright &copy; Mikołaj Data</p>
             </footer>
         </div>
     </div>
