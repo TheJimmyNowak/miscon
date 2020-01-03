@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import FormView
 from .forms import AddGuestForm, DeleteGuestForm
 from .models import Guest
+from games.models import GameRentModel
 
 
 class AddGuestView(FormView):
@@ -34,12 +35,14 @@ class DeleteGuestView(FormView):
     template_name = 'deleteGuest.html'
 
     def get(self, request, guest_id=None, **kwargs):
-        print(guest_id)
         if guest_id:
-            guest = Guest.objects.filter(id=guest_id)
-            print(guest)
-            guest.delete()
-            return redirect('/guests/deleteguest/')
+            if len(GameRentModel.objects.filter(guest_id=guest_id)) == 0:
+                guest = Guest.objects.filter(id=guest_id)
+                guest.delete()
+                return redirect('/guests/deleteguest/')
+            else:
+                print("NIE ODDANA GRA!!!")
+                return redirect('gamenotcommited')
 
         form = DeleteGuestForm()
         return render(request, self.template_name, {'form': form})
@@ -67,3 +70,7 @@ class DeleteGuestView(FormView):
         args['form'] = form
 
         return render(request, self.template_name, args)
+
+
+def game_not_committed_view(request):
+    return render(request, 'gameNotCommitted.html')

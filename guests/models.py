@@ -6,7 +6,7 @@ class Guest(models.Model):
     last_name = models.CharField(max_length=50)
     age = models.IntegerField(default=0)
     city = models.CharField(max_length=100)
-    document = models.CharField(max_length=50)
+    pesel = models.CharField(max_length=50)
     types = (
         ('U', 'Uczestnik'),
         ('G', 'Gość'),
@@ -14,6 +14,7 @@ class Guest(models.Model):
         ('O', 'Organizator')
     )
     guest_type = models.CharField(max_length=1, default='O')
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.guest_type) + str(self.id)
