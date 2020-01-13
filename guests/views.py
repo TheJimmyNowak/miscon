@@ -36,12 +36,13 @@ class DeleteGuestView(FormView):
 
     def get(self, request, guest_id=None, **kwargs):
         if guest_id:
-            if len(GameRentModel.objects.filter(guest_id=guest_id)) == 0:
+            rented_games = GameRentModel.objects.filter(guest_id=guest_id)
+            if len(rented_games) == 0:
                 guest = Guest.objects.filter(id=guest_id)
                 guest.delete()
                 return redirect('/guests/deleteguest/')
             else:
-                print("NIE ODDANA GRA!!!")
+                print("NIE ODDANA GRA!!! " + str(rented_games))
                 return redirect('gamenotcommited')
 
         form = DeleteGuestForm()
