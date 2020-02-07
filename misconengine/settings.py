@@ -26,7 +26,7 @@ if key:
 else:
     SECRET_KEY = "ASDFD"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['miscon.herokuapp.com', '127.0.0.1', 'localhost']
 
