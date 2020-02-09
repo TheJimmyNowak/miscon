@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'misconengine.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if not os.environ.get(""):
+if not os.environ.get("DEBUG_VALUE"):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
