@@ -26,9 +26,9 @@ if key:
 else:
     SECRET_KEY = "ASDFD"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['miscon.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['miscon.herokuapp.com', '172.18.26.253', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -52,9 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'misconengine.urls'
 
@@ -83,6 +81,14 @@ WSGI_APPLICATION = 'misconengine.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': '127.0.0.1',
+        'NAME': 'misconauth',
+        'USER': 'misconauth',
+        'PASSWORD': 'Konwent2k20auth',
+        'PORT': '5433',
+    },
+    'dev': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'ec2-54-246-121-32.eu-west-1.compute.amazonaws.com',
         'NAME': 'drj1fgii66laq',

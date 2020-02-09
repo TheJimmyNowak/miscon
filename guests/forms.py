@@ -1,5 +1,4 @@
 from django import forms
-from .models import Guest
 
 
 class AddGuestForm(forms.Form):
@@ -27,14 +26,6 @@ class AddGuestForm(forms.Form):
             'placeholder': 'Wiek'
         }
     ))
-    document = forms.CharField(max_length=50, label='', widget=forms.TextInput(
-        attrs={
-            'class': 'form-control',
-            'placeholder': 'PESEL'
-        }
-    ))
-
-    guest_type = forms.ChoiceField(label='', choices=Guest.types)
 
 
 class DeleteGuestForm(forms.Form):

@@ -20,10 +20,8 @@ class AddGuestView(FormView):
             data = form.cleaned_data
             guest.first_name = data['first_name']
             guest.last_name = data['last_name']
-            guest.document = data['document']
             guest.city = data['city']
             guest.age = data['age']
-            guest.guest_type = data['guest_type']
             guest.save()
 
         args = {'form': form, 'guest_id': str(guest)}
@@ -54,15 +52,14 @@ class DeleteGuestView(FormView):
 
         if form.is_valid():
             try:
-                guest = form.cleaned_data['guest']
-                guest_type = guest[0].upper()
-                guest_id = guest[1:]
-                guest = Guest.objects.filter(guest_type=guest_type, id=guest_id)
+                guest_id = int(form.cleaned_data['guest'])
+                guest = Guest.objects.filter(id=guest_id)
 
                 if len(guest) == 1:
                     args['is_found'] = True
                     args['guest_id'] = guest_id
                 else:
+                    print("Guest doesn't exist guests/views.py")
                     args['guest_exist'] = False
 
             except ValueError as err:
