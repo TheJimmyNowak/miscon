@@ -22,6 +22,7 @@ class AddGuestView(FormView):
             guest.last_name = data['last_name']
             guest.city = data['city']
             guest.age = data['age']
+            form.data = {}
             guest.save()
 
         args = {'form': form, 'guest_id': str(guest)}

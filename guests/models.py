@@ -9,4 +9,4 @@ class Guest(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.id)
+        return str("{}.{} {}".format(self.id, self.first_name, self.last_name))

@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['miscon.herokuapp.com', '172.18.26.253', 'localhost', '127.0.0.
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -79,18 +78,7 @@ WSGI_APPLICATION = 'misconengine.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if not os.environ.get("DEBUG_VALUE"):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'HOST': '127.0.0.1',
-            'NAME': 'misconauth',
-            'USER': 'misconauth',
-            'PASSWORD': 'Konwent2k20auth',
-            'PORT': '5433',
-        },
-    }
-else:
+if os.environ.get("DEBUG_VALUE"):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -100,6 +88,17 @@ else:
             'PASSWORD': '352e40c9e0d3ce359832467657259b60d73b19753bee41667da51761a4bb3536',
             'PORT': '5432'
         }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'HOST': '127.0.0.1',
+            'NAME': 'misconauth',
+            'USER': 'misconauth',
+            'PASSWORD': 'Konwent2k20auth',
+            'PORT': '5433',
+        },
     }
 
 # Password validation
